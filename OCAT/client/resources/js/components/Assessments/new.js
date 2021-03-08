@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { AssessmentService } from '../shared/services/assessment.service';
 
 export function AssessmentNew(){
-  const createAssesmentObject = (data)=>{
+  const createAssessmentObject = (data)=>{
     var assessment ={
       type: data.type, 
       catName : data.catName,
@@ -37,8 +37,8 @@ export function AssessmentNew(){
   const { register, handleSubmit, errors } = useForm({shouldFocusError: true});  
 
   const onSubmit = async (data) => {
-    var assesment = createAssesmentObject(data);
-    await AssessmentService.submit(assesment);
+    var assessment = createAssessmentObject(data);
+    await AssessmentService.submit(assessment);
   };
 
   return (
