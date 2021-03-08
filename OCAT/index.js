@@ -25,7 +25,7 @@ app.use(`/public`, (req, res) => {
 
 RouteLoader(app)
   .then(() => {
-    app.post(`/assessment/submit`, AssessmentSubmitRoute);
+    app.post(`/assessment`, AssessmentSubmitRoute);
     app.all(`/*`, IndexRoute);
 
     server.listen(config.server.port);
