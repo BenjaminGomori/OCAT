@@ -3,7 +3,7 @@ const express = require(`express`);
 const app = express();
 const server = require(`http`).Server(app);
 
-const { RouteLoader, IndexRoute } = require(`./server/utils`);
+const { RouteLoader, IndexRoute,  AssessmentSubmitRoute} = require(`./server/utils`);
 
 const bodyParser = require(`body-parser`);
 const favicon = require(`serve-favicon`);
@@ -25,6 +25,7 @@ app.use(`/public`, (req, res) => {
 
 RouteLoader(app)
   .then(() => {
+    app.post(`/assessment/submit`, AssessmentSubmitRoute);
     app.all(`/*`, IndexRoute);
 
     server.listen(config.server.port);
