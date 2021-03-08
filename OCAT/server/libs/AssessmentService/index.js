@@ -5,7 +5,17 @@ exports.submit = ( assessment ) => {
     return new Promise((resolve, reject) => {
   
     //supply the correct uri and method here
+
+    //TODO perhaps change it to path?
       const options = {
+          uri: `${ config.api.url}/assessment/submit/`,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: {
+            assessment: assessment
+          }
       };
   
       //this function sends a request to the API
