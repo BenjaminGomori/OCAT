@@ -2,6 +2,7 @@ const config = require(`../../utils/Config`);
 const pkg = require(`../../../package.json`);
 
 const knex = require(`knex`)({
+  debug: true,
   client: config.database.dialect,
   connection: {
     host     : config.database.host,
