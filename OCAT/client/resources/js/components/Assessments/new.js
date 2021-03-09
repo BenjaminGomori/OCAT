@@ -5,7 +5,7 @@ import { AssessmentService } from '../shared/services/assessment.service';
 export function AssessmentNew(){
   const createAssessmentObject = (data)=>{
     var assessment ={
-      type: data.type, 
+      instrument: data.instrument, 
       catName : data.catName,
       catDateOfBirth : data.catDateOfBirth,
     }
@@ -48,7 +48,7 @@ export function AssessmentNew(){
       {errors.catName && <p>Required</p>}
 
       <h2 className="question-header">Instrument</h2>
-      <input type="text" name="type" value="piano" readOnly="readOnly" ref={register()}/>
+      <input type="text" name="instrument" value="piano" readOnly="readOnly" ref={register()}/>
 
       <h2>Cat Date of Birth</h2>
       <input type="date"  name="catDateOfBirth" ref={register()} />
