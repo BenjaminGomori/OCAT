@@ -5,7 +5,7 @@ import { AssessmentService } from '../shared/services/assessment.service';
 export function AssessmentNew(){
   const createAssessmentObject = (data)=>{
     var assessment ={
-      instrument: data.instrument, 
+      instrument: data.instruments, 
       catName : data.catName,
       catDateOfBirth : data.catDateOfBirth,
     }
@@ -48,10 +48,18 @@ export function AssessmentNew(){
       {errors.catName && <p>Required</p>}
 
       <h2 className="question-header">Instrument</h2>
-      <input type="text" name="instrument" value="piano" readOnly="readOnly" ref={register()}/>
+      <select name="instruments" id="instrument-select" ref={register({ required: true })}>
+        <option value="">--Please choose an option--</option>
+        <option value="clarinet">Clarinet</option>
+        <option value="drum">Drum</option>
+        <option value="guitar">Guitar</option>
+        <option value="piano" >Piano</option>
+      </select>
+      {errors.instruments && <p>Required</p>}
 
       <h2>Cat Date of Birth</h2>
-      <input type="date"  name="catDateOfBirth" ref={register()} />
+      <input type="date"  name="catDateOfBirth" ref={register({ required: true })} />
+      {errors.catDateOfBirth && <p>Required</p>}
 
       <h2 className="question-header">Previous contact with the Cat Judicial System</h2>
       <input type="radio" id="prevJudSys-no" name="prevJudSys" value="0" ref={register({ required: true })}/>
