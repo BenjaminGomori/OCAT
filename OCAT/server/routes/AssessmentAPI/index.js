@@ -10,6 +10,6 @@ router.post(`/submit`, (req, res) => {
 });
 
 exports.router = router;
-//TODO what is correct?
+// TODO what is correct?
 // exports.path = `/api/assessment`;//original 
 exports.path = `/assessment`;

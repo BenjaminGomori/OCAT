@@ -7,12 +7,11 @@ export class AssessmentService {
             //console.log('server sending');
             //console.log( assessment);
 
-            //TODO change it to options?
             let res = await axios.post('http://localhost:3000/assessment/submit', assessment);
             let data = res.data;
 
-            console.log('server came back');
-            console.log(data);
+            //console.log('server came back');
+            //console.log(data);
 
             return;
         }

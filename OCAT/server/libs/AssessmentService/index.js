@@ -4,9 +4,7 @@ const config = require(`../Config`);
 exports.submit = ( assessment ) => {
     return new Promise((resolve, reject) => {
   
-    //supply the correct uri and method here
-
-    //TODO perhaps change it to path?
+      //supply the correct uri and method here
       const options = {
           uri: `${ config.api.url}/assessment/submit/`,
           method: 'POST',
@@ -22,13 +20,13 @@ exports.submit = ( assessment ) => {
       // finish the logic to handle the response when returned from the API
       request(options, (error, response) => {
         if(error == null){
-          let json = JSON.parse(body);
-          console.log(json);
+          // let json = JSON.parse(body);
+          // console.log(json);
           resolve(response);
         }
         if(error != null){
-          let json = JSON.parse(body);
-          console.log(json);
+          // let json = JSON.parse(body);
+          // console.log(json);
           reject(error);
         }
       });
