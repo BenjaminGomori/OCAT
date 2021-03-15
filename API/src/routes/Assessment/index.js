@@ -9,7 +9,8 @@ module.exports = server => {
     `${ BASE_URL }/submit`,
     async (req, res, next) => {
       try {
-        // const { assessment } = req.params;original
+        //original
+        // const { assessment } = req.params;
         const  assessment  = req.params;
     
         //verify that your data is making it here to the API by using console.log(assessment);
@@ -17,15 +18,16 @@ module.exports = server => {
         // console.log(assessment);
         
         //call the AssessmentService.submit function from the API/src/microservices/Assessment/ and supply the correct parameters
-        AssessmentService.submit(assessment)
+        const ben  = await AssessmentService.submit(assessment);
 
         ResponseHandler(
           res,
           `Submitted assessment`,
-          {},
+          {ben},
           next
         );
       } catch (err) {
+        console.log(err)
         next(err);
       }
     }
