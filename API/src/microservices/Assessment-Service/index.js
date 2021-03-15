@@ -3,29 +3,25 @@ const { Assessments } = require(`../Database`);
 exports.submit = (assessment) => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
-      //use the bookshelf model Assessments from API/src/microservices/Database to save the assessment data in the PostgreSQL database
-      console.log('before calling database')
-      console.log(assessment);
-      console.log(new Date(assessment.catDateOfBirth));
-      
-      
-     
-
-      let val = await Assessments.forge({ 
-        'id': 1,
+      var date = new Date();
+      var shortDate = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate() 
+                      + ' '  +date.getHours()+ ':' + date.getMinutes()+ ':' + date.getSeconds();
+      let val = { 
         'cat_name': assessment.catName,
-        'cat_date_of_birth':new Date(assessment.catDateOfBirth),
+        'cat_date_of_birth':assessment.catDateOfBirth,
         'instrument': assessment.instrument,
         'score': assessment.score,
         'risk_level': assessment.riskLevel,
-        'created_at': new Date(2021, 11, 17),
+        'created_at': shortDate,
         'deleted_at': null
-      }).save()
-      resolve();
- 
+      }
 
-
+      console.log('before calling database')
+      console.log(val);
       
+      return new Assessments(val).save()
+      //resolve();
+
     } catch (err) {
       reject(err);
     }
