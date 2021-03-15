@@ -3,7 +3,7 @@ const { Assessments } = require(`../Database`);
 exports.submit = (assessment) => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
-      var date = new Date();
+      const date = new Date();
       const shortDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
       let val = { 

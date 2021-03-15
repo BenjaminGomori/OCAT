@@ -4,7 +4,7 @@ import { AssessmentService } from '../shared/services/assessment.service';
 
 export function AssessmentNew(){
   const createAssessmentObject = (data)=>{
-    var assessment ={
+    const assessment ={
       instrument: data.instruments, 
       catName : data.catName,
       catDateOfBirth : data.catDateOfBirth,
@@ -15,7 +15,7 @@ export function AssessmentNew(){
   }
 
   const calculateScore = (data)=>{
-    var score = 0;
+    let score = 0;
     score += +data.response1;
     score += +data.response2;
     score += +data.response3;
@@ -25,7 +25,7 @@ export function AssessmentNew(){
   }
 
   const calculateRiskLevel = (score)=>{
-    var riskLevel = 'low';
+    let riskLevel = 'low';
     if(score > 1) riskLevel = 'meduim';
     if(score > 3) riskLevel = 'high';
 
@@ -35,7 +35,7 @@ export function AssessmentNew(){
   const { register, handleSubmit, errors } = useForm({shouldFocusError: true});  
 
   const onSubmit = async (data) => {
-    var assessment = createAssessmentObject(data);
+    const assessment = createAssessmentObject(data);
     await AssessmentService.submit(assessment);
   };
 
