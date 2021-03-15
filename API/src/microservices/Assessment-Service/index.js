@@ -16,8 +16,8 @@ exports.submit = (assessment) => {
         'deleted_at': null
       }
 
-      console.log('before calling database')
-      console.log(val);
+      // console.log('before calling database')
+      // console.log(val);
       
       let assesment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
