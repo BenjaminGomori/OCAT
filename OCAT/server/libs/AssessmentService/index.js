@@ -20,13 +20,9 @@ exports.submit = ( assessment ) => {
       // finish the logic to handle the response when returned from the API
       request(options, (error, response) => {
         if(error == null){
-          // let json = JSON.parse(body);
-          // console.log(json);
           resolve(response);
         }
         if(error != null){
-          // let json = JSON.parse(body);
-          // console.log(json);
           reject(error);
         }
       });
