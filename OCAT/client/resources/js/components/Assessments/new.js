@@ -16,11 +16,11 @@ export function AssessmentNew(){
 
   const calculateScore = (data)=>{
     var score = 0;
-    score += +data.prevJudSys;
-    score += +data.phsAltCat;
-    score += +data.prsAltOwn;
-    score += +data.plyDog;
-    score += +data.hssStr;
+    score += +data.response1;
+    score += +data.response2;
+    score += +data.response3;
+    score += +data.response4;
+    score += +data.response5;
     return score;
   }
 
@@ -62,39 +62,39 @@ export function AssessmentNew(){
       {errors.catDateOfBirth && <p>Required</p>}
 
       <h2 className="question-header">Previous contact with the Cat Judicial System</h2>
-      <input type="radio" id="prevJudSys-no" name="prevJudSys" value="0" ref={register({ required: true })}/>
-      <label htmlFor="prevJudSys-no">No</label><br/>
-      <input type="radio" id="prevJudSys-yes" name="prevJudSys" value="1" ref={register({ required: true })}/>
-      <label htmlFor="prevJudSys-yes">Yes</label><br/>
-      {errors.prevJudSys && <p>Required</p>}
+      <input type="radio" id="response1-no" name="response1" value="0" ref={register({ required: true })}/>
+      <label htmlFor="response1-no">No</label><br/>
+      <input type="radio" id="response1-yes" name="response1" value="1" ref={register({ required: true })}/>
+      <label htmlFor="response1-yes">Yes</label><br/>
+      {errors.response1 && <p>Required</p>}
 
       <h2 className="question-header">Physical altercations with other cats</h2>
-      <input type="radio" id="phsAltCat-0" name="phsAltCat" value="0" ref={register({ required: true })}/>
-      <label htmlFor="PhsAltCat-0">0-3 altercations</label><br/>
-      <input type="radio" id="phsAltCat-3" name="phsAltCat" value="1" ref={register({ required: true })}/>
-      <label htmlFor="PhsAltCat-3">3+ altercations</label><br/>
-      {errors.phsAltCat && <p>Required</p>}
+      <input type="radio" id="response2-0" name="response2" value="0" ref={register({ required: true })}/>
+      <label htmlFor="response2-0">0-3 altercations</label><br/>
+      <input type="radio" id="response2-3" name="response2" value="1" ref={register({ required: true })}/>
+      <label htmlFor="response2-3">3+ altercations</label><br/>
+      {errors.response2 && <p>Required</p>}
 
       <h2 className="question-header">Physical altercations with owner (scratching, biting, etc...)</h2>
-      <input type="radio" id="phsAltOwn-10" name="prsAltOwn" value="1" ref={register({ required: true })}/>
-      <label htmlFor="prsAltOwn-10">10+ altercations</label><br/>
-      <input type="radio" id="phsAltOwn-0" name="prsAltOwn" value="0" ref={register({ required: true })}/>
-      <label htmlFor="prsAltOwn-0">0-10 altercations </label><br/>
-      {errors.prsAltOwn && <p>Required</p>}
+      <input type="radio" id="response3-10" name="response3" value="1" ref={register({ required: true })}/>
+      <label htmlFor="response3-10">10+ altercations</label><br/>
+      <input type="radio" id="response3-0" name="response3" value="0" ref={register({ required: true })}/>
+      <label htmlFor="response3-0">0-10 altercations </label><br/>
+      {errors.response3 && <p>Required</p>}
 
       <h2 className="question-header">Plays well with dogs</h2>
-      <input type="radio" id="plyDog-no" name="plyDog" value="1" ref={register({ required: true })}/>
-      <label htmlFor="plyDog-no">No</label><br/>
-      <input type="radio" id="plyDog-yes" name="plyDog" value="0" ref={register({ required: true })}/>
-      <label htmlFor="plyDog-yes">Yes</label><br/>
-      {errors.plyDog && <p>Required</p>}
+      <input type="radio" id="response4-no" name="response4" value="1" ref={register({ required: true })}/>
+      <label htmlFor="response4-no">No</label><br/>
+      <input type="radio" id="response4-yes" name="response4" value="0" ref={register({ required: true })}/>
+      <label htmlFor="response4-yes">Yes</label><br/>
+      {errors.response4 && <p>Required</p>}
 
       <h2 className="question-header">Hisses at strangers</h2>
-      <input type="radio" id="hssStr-yes" name="hssStr" value="1" ref={register({ required: true })}/>
-      <label htmlFor="hssStr-yes">Yes</label><br/>
-      <input type="radio" id="hssStr-no" name="hssStr" value="0" ref={register({ required: true })}/>
-      <label htmlFor="hssStr-No">No</label><br/> 
-      {errors.hssStr && <p>Required</p>}
+      <input type="radio" id="response5-yes" name="response5" value="1" ref={register({ required: true })}/>
+      <label htmlFor="response5-yes">Yes</label><br/>
+      <input type="radio" id="response5-no" name="response5" value="0" ref={register({ required: true })}/>
+      <label htmlFor="response5-No">No</label><br/> 
+      {errors.response5 && <p>Required</p>}
 
       <input type="submit" />
     </form>
