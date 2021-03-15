@@ -11,7 +11,6 @@ module.exports = (res, message, data = {}, next) => {
   res.json({
     status: status,
     message,
-    data
   });
   
   next();
