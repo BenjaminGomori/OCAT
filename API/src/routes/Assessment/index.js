@@ -14,16 +14,16 @@ module.exports = server => {
         const  assessment  = req.params;
     
         //verify that your data is making it here to the API by using console.log(assessment);
-        // console.log('in api router')
-        // console.log(assessment);
+        console.log('in api router')
+        console.log(assessment);
         
         //call the AssessmentService.submit function from the API/src/microservices/Assessment/ and supply the correct parameters
         const ben  = await AssessmentService.submit(assessment);
 
         ResponseHandler(
           res,
-          `Submitted assessment`,
-          {ben},
+          '',
+          ben,
           next
         );
       } catch (err) {
