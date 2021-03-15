@@ -16,12 +16,12 @@ module.exports = {
     'ims-application': server[`ims-application`] || ``,
   },
   database: {
-    host: process.env.DATABASE_HOST || `localhost`,
-    port: process.env.DATABASE_PORT || 5432,
-    username: process.env.DATABASE_USERNAME || `cat`,
-    password: process.env.DATABASE_PASSWORD || `1234`,
-    name: process.env.DATABASE_NAME || `OCAT`,
-    dialect: process.env.DATABASE_DIALECT || `pg`,
-    minconnections: process.env.DATABASE_MINCONNECTIONS || 2
+    host: process.env.DATABASE_HOST || config.database.host,
+    port: process.env.DATABASE_PORT || config.database.port,
+    username: process.env.DATABASE_USERNAME || config.database.username,
+    password: process.env.DATABASE_PASSWORD || config.database.password,
+    name: process.env.DATABASE_NAME || config.database.name,
+    dialect: process.env.DATABASE_DIALECT || config.database.dialect,
+    minconnections: process.env.DATABASE_MINCONNECTIONS || config.database.minconnections
   }
 };
