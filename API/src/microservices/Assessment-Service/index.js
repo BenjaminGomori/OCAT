@@ -19,11 +19,15 @@ exports.submit = (assessment) => {
       console.log('before calling database')
       console.log(val);
       
-      return new Assessments(val).save()
-      //resolve();
+      let assesment = await new Assessments(val).save().catch(function (e) {
+        console.log('error in saving assessment')
+        resolve();
+      });
+
+      resolve(assesment);
 
     } catch (err) {
-      reject(err);
+      reject();
     }
   });
 };
