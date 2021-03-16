@@ -76,7 +76,7 @@ export function AssessmentNew(){
 
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
-                <h5 className="text-decoration-underline">Previous contact with the Cat Judicial System</h5>
+                <h5 className="text-decoration-underline">1. Previous contact with the Cat Judicial System:</h5>
                 <div className="form-check">
                   <input className="form-check-input" type="radio" id="response1-no" name="response1" value="0" ref={register({ required: true })}/>
                   <label className="form-check-label" htmlFor="response1-no">No</label>
@@ -90,7 +90,7 @@ export function AssessmentNew(){
 
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
-                <h5 className="text-decoration-underline">Physical altercations with other cats</h5>
+                <h5 className="text-decoration-underline">2. Physical altercations with other cats:</h5>
                 <div className="form-check">
                   <input className="form-check-input" type="radio" id="response2-0" name="response2" value="0" ref={register({ required: true })}/>
                   <label className="form-check-label" htmlFor="response2-0">0-3 altercations</label>
@@ -104,7 +104,7 @@ export function AssessmentNew(){
 
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
-                <h5 className="text-decoration-underline">Physical altercations with owner (scratching, biting, etc...)</h5>
+                <h5 className="text-decoration-underline">3. Physical altercations with owner (scratching, biting, etc...):</h5>
                 <div className="form-check">
                   <input className="form-check-input" type="radio" id="response3-10" name="response3" value="1" ref={register({ required: true })}/>
                   <label className="form-check-label" htmlFor="response3-10">10+ altercations</label>       
@@ -118,7 +118,7 @@ export function AssessmentNew(){
 
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
-                <h5 className="text-decoration-underline">Plays well with dogs</h5>
+                <h5 className="text-decoration-underline">4. Plays well with dogs:</h5>
                 <div className="form-check">
                   <input className="form-check-input" type="radio" id="response4-no" name="response4" value="1" ref={register({ required: true })}/>
                   <label className="form-check-label mr-30" htmlFor="response4-no">No</label>
@@ -132,7 +132,7 @@ export function AssessmentNew(){
 
             <div className="form-row align-items-center mb-2">
               <div className="col-auto">
-                <h5 className="text-decoration-underline">Hisses at strangers</h5>
+                <h5 className="text-decoration-underline">5. Hisses at strangers:</h5>
                 <div className="form-check">
                   <input className="form-check-input" type="radio" id="response5-yes" name="response5" value="1" ref={register({ required: true })}/>
                   <label className="form-check-label mr-30" htmlFor="response5-yes">Yes</label>
