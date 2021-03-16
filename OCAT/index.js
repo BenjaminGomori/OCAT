@@ -4,9 +4,6 @@ const app = express();
 const server = require(`http`).Server(app);
 const cors = require('cors')
 
-
-
-
 const { RouteLoader, IndexRoute,  AssessmentSubmitRoute} = require(`./server/utils`);
 
 const bodyParser = require(`body-parser`);
@@ -31,10 +28,7 @@ app.use(`/public`, (req, res) => {
 RouteLoader(app)
   .then(() => {
     app.all(`/*`, IndexRoute);
-
-
     server.listen(config.server.port);
-
     console.log(`Listening on port: ${ config.server.port }!`); // eslint-disable-line
   })
   .catch((err) => {
