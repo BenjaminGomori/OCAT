@@ -11,12 +11,11 @@ module.exports = server => {
       try {
 
         const  {assessment}  = req.params;
-        const newAssessment  = await AssessmentService.submit(assessment);
+        await AssessmentService.submit(assessment);
 
         ResponseHandler(
           res,
-          '',
-          newAssessment,
+          'Submission of Assessment Succeeded',
           next
         );
       } catch (err) {
