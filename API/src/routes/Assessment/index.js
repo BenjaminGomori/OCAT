@@ -10,7 +10,7 @@ module.exports = server => {
     async (req, res, next) => {
       try {
 
-        const  assessment  = req.params;
+        const  {assessment}  = req.params;
         const newAssessment  = await AssessmentService.submit(assessment);
 
         ResponseHandler(
