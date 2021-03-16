@@ -16,6 +16,7 @@ module.exports = server => {
         ResponseHandler(
           res,
           'Submission of Assessment Succeeded',
+          null,
           next
         );
       } catch (err) {
