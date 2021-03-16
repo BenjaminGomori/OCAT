@@ -2,6 +2,7 @@ module.exports = (res, message, data = {}, next) => {
   
   let status = 'SUCCESS';
   message = 'Submission of Assessment Succeeded';
+   obj={};
 
   if(!data.attributes){
     message = 'Submission of Assessment Failed';
@@ -11,6 +12,7 @@ module.exports = (res, message, data = {}, next) => {
   res.json({
     status: status,
     message,
+    data: obj,
   });
   
   next();
