@@ -15,10 +15,10 @@ exports.submit = (assessment) => {
         'created_at': shortDate,
         'deleted_at': null
       }
-      
+
       let assesment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
-        resolve();
+        resolve(assesment);
       });
 
       resolve(assesment);
