@@ -6,14 +6,15 @@ exports.submit = ( assessment ) => {
   
       //supply the correct uri and method here
       const options = {
-          uri: `${ config.api.url}/assessment/submit/`,
+          uri: `http://${ config.api.url}/assessment/submit/`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: {
             assessment: assessment
-          }
+          },
+          json: true
       };
   
       //this function sends a request to the API
