@@ -47,7 +47,7 @@ export function AssessmentNew(){
 
           <form onSubmit={handleSubmit(onSubmit)}>
       
-            <div className="form-row align-items-center mb-3">
+            <div className="form-row align-items-center mb-1">
               <div className="col-auto mr-2">
                 <h5>Cat Name</h5>
                 <input className="form-control form-control-sm" type="text" name="catName" id="catName-id" autoFocus ref={register({required: true, maxLength: 80})} />
@@ -144,7 +144,7 @@ export function AssessmentNew(){
               </div>
             </div>
 
-            <div className="form-row mb-4">
+            <div className="form-row mb-2">
                 <input type="submit"/>      
             </div>
 
