@@ -52,7 +52,7 @@ export function AssessmentNew(){
                 <h5>Cat Name</h5>
                 <input className="form-control form-control-sm" type="text" name="catName" id="catName-id" autoFocus ref={register({required: true, maxLength: 80})} />
               </div>
-              <div className="col-auto  mr-2">
+              <div className="col-auto mr-2">
                 <h5>Cat Date of Birth</h5>
                 <input className="form-control form-control-sm" type="date"  name="catDateOfBirth" id="catDateOfBirth-id" ref={register({ required: true })} />
               </div>
@@ -65,9 +65,14 @@ export function AssessmentNew(){
                   <option value="guitar">Guitar</option>
                   <option value="piano" >Piano</option>
                 </select>
-              {errors.instruments && <p>Required</p>}
               </div>
             </div>
+            <div className="form-row align-items-center mb-3">
+              <div className="col-auto">
+              {errors.catName, errors.catDateOfBirth, errors.instruments  && <p>Required</p>}
+              </div>
+            </div>
+
 
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
