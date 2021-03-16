@@ -26,7 +26,7 @@ export function AssessmentNew(){
 
   const calculateRiskLevel = (score)=>{
     let riskLevel = 'low';
-    if(score > 1) riskLevel = 'meduim';
+    if(score > 1) riskLevel = 'medium';
     if(score > 3) riskLevel = 'high';
 
     return riskLevel;
