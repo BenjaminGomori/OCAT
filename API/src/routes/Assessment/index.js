@@ -30,11 +30,7 @@ module.exports = server => {
     `${ BASE_URL }/retrieve`,
     async (req, res, next) => {
       try {
-        console.log('2121212122121212121212221212212121212121212121212')
-
         const assessmentList = await AssessmentService.retrieve();
-        console.log(assessmentList.length)
-
 
         ResponseHandler(
           res,

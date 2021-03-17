@@ -50,7 +50,6 @@ exports.submit = ( assessment ) => {
           resolve(response);
         }
         if(error != null){
-          console.log('###########################################################')
           reject(error);
         }
       });

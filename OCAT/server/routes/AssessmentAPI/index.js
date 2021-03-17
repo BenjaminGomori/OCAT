@@ -9,7 +9,6 @@ router.post(`/submit`, (req, res) => {
 
 router.get(`/retrieve`, (req, res) => {
     AssessmentService.retrieve().then((response) => {
-         console.log(response.body.status);
          res.send(response.body.data)        
       });
 });

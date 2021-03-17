@@ -37,8 +37,6 @@ exports.retrieve = () => {
         resolve(assesmentList.toJSON());
       });
 
-      console.log('34343434343434343434343434343434343434343434343434343434');
-      console.log(assesmentList.toJSON());
       resolve(assesmentList.toJSON());
 
     } catch (err) {
