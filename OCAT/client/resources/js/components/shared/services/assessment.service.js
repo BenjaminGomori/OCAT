@@ -14,12 +14,7 @@ export class AssessmentService {
 
     static async retrieveAll() {
         try {
-            //console.log('2222222222222222222222222222222222222');
-            const assessments =  axios.get('http://localhost:4567/api/assessment/retrieve').then((res) => {
-                console.log(res);
-                return res;
-             });
-            console.log(assessments);    
+            const assessments = await axios.get('http://localhost:4567/api/assessment/retrieve');
             return assessments;
         }
         catch (err) {
