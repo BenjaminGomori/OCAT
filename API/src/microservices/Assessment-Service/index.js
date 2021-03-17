@@ -28,3 +28,21 @@ exports.submit = (assessment) => {
     }
   });
 };
+
+exports.retrieve = () => {
+  return new Promise(async (resolve, reject) => { //eslint-disable-line
+    try {
+      let assesmentList = await new Assessments().fetchAll().catch(function (e) {
+        console.log('error in retrieving assessments')
+        resolve(assesmentList.toJSON());
+      });
+
+      console.log('34343434343434343434343434343434343434343434343434343434');
+      console.log(assesmentList.toJSON());
+      resolve(assesmentList.toJSON());
+
+    } catch (err) {
+      reject();
+    }
+  });
+};
