@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { AssessmentService } from '../shared/services/assessment.service';
 import { useTable, useSortBy, useFilters } from 'react-table';
 
+//Used this https://github.com/tannerlinsley/react-table/tree/master/examples/sorting as a resource for my code for the table sorting.
+//Used this https://www.youtube.com/watch?v=2U9eVClAqh0 as a resource for my code for the table filtering.
+
 export function AssessmentList(){
     
     const [columnsArray, setColumnsArray] = useState([]);
