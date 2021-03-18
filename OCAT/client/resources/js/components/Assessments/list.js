@@ -16,7 +16,6 @@ export function AssessmentList(){
                 dateOfBirth = new Date (dateOfBirth);
                 dateOfBirth = dateOfBirth.toLocaleDateString("en-US");
                 
-                
                 let createdAt = Date.parse(assessment.created_at);
                 createdAt = new Date (createdAt);
                 createdAt = createdAt.toLocaleString("en-US");
