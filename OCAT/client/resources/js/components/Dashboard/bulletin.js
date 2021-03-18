@@ -26,7 +26,6 @@ export class DashboardBulletin extends React.Component {
                     </div>
                     <div className="col-auto">
                       <NavLink to="/assessment/list">List</NavLink>
-                      {/* <button href="/assessment/list">List</button> */}
                     </div>
                   </div>
                 </div>
