@@ -5,11 +5,11 @@ import { AssessmentNew } from '../components/Assessments/new';
 import { AssessmentList } from '../components/Assessments/list';
 
 export function App() {
-  return <>
+  return (
       <BrowserRouter>
         <Route path="/" component={DashboardBulletin} />
         <Route path="/assessment/new" component={AssessmentNew} />
         <Route path="/assessment/list" component={AssessmentList} />
       </BrowserRouter>
-  </>;
+  );
 }
