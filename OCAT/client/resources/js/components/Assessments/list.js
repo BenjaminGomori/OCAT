@@ -11,14 +11,24 @@ export function AssessmentList(){
             const resData = await AssessmentService.retrieveAll();
             const columnedData = []
             resData.data.forEach(assessment => {
+                
+                let dateOfBirth = Date.parse(assessment.cat_date_of_birth);
+                dateOfBirth = new Date (dateOfBirth);
+                dateOfBirth = dateOfBirth.toLocaleDateString("en-US");
+                
+                
+                let createdAt = Date.parse(assessment.created_at);
+                createdAt = new Date (createdAt);
+                createdAt = createdAt.toLocaleString("en-US");
+                
                 columnedData.push(
                     {
                         column1: assessment.cat_name,
-                        column2: assessment.cat_date_of_birth,
+                        column2: dateOfBirth,
                         column3: assessment.instrument,
                         column4: assessment.risk_level,
                         column5: assessment.score+'',
-                        column6: assessment.created_at,
+                        column6: createdAt,
                     })
             });
             setColumnsArray(columnedData);
@@ -150,7 +160,7 @@ export function AssessmentList(){
                                     key={uniqueListkey++}
                                     {...cell.getCellProps()}
                                     style={{
-                                        padding: '10px 25px',
+                                        padding: '10px 15px',
                                         border: 'solid 1px gray',
                                         }}
                                 >
