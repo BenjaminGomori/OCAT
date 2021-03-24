@@ -5,7 +5,7 @@ import { AssessmentService } from '../shared/services/assessment.service';
 export function AssessmentNew(){
   const createAssessmentObject = (data)=>{
     const assessment ={
-      instrument: data.instruments, 
+      instrument: 'Cat Behavioral Instrument', 
       catName : data.catName,
       catDateOfBirth : data.catDateOfBirth,
     }
@@ -58,18 +58,12 @@ export function AssessmentNew(){
               </div>
               <div className="col-auto">
                 <h5>Instrument</h5>
-                <select className="form-control form-control-sm" name="instruments" id="instrument-select" ref={register({ required: true })}>
-                  <option value="">--Please choose an option--</option>
-                  <option value="clarinet">Clarinet</option>
-                  <option value="drum">Drum</option>
-                  <option value="guitar">Guitar</option>
-                  <option value="piano" >Piano</option>
-                </select>
+                <input type="text" name="instrument" value="Cat Behavioral Instrument" disabled readOnly="readOnly" ref={register()}/>
               </div>
             </div>
             <div className="form-row align-items-center mb-3">
               <div className="col-auto">
-              {errors.catName, errors.catDateOfBirth, errors.instruments  && <p>Required</p>}
+              {errors.catName, errors.catDateOfBirth  && <p>Required</p>}
               </div>
             </div>
 
