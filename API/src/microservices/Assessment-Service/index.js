@@ -16,12 +16,12 @@ exports.submit = (assessment) => {
         'deleted_at': null
       }
 
-      let assesment = await new Assessments(val).save().catch(function (e) {
+      let assessment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
-        resolve(assesment);
+        resolve(assessment);
       });
 
-      resolve(assesment);
+      resolve(assessment);
 
     } catch (err) {
       reject();
