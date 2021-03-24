@@ -16,12 +16,28 @@ exports.submit = (assessment) => {
         'deleted_at': null
       }
 
-      let assesment = await new Assessments(val).save().catch(function (e) {
+      let newAssessment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
-        resolve(assesment);
+        resolve(newAssessment);
       });
 
-      resolve(assesment);
+      resolve(newAssessment);
+
+    } catch (err) {
+      reject();
+    }
+  });
+};
+
+exports.retrieve = () => {
+  return new Promise(async (resolve, reject) => { //eslint-disable-line
+    try {
+      let assesmentList = await new Assessments().where({deleted_at: null}).fetchAll().catch(function (e) {
+        console.log('error in retrieving assessments')
+        resolve(assesmentList.toJSON());
+      });
+
+      resolve(assesmentList.toJSON());
 
     } catch (err) {
       reject();

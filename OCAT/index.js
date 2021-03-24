@@ -4,7 +4,7 @@ const app = express();
 const server = require(`http`).Server(app);
 const cors = require('cors')
 
-const { RouteLoader, IndexRoute,  AssessmentSubmitRoute} = require(`./server/utils`);
+const { RouteLoader, IndexRoute} = require(`./server/utils`);
 
 const bodyParser = require(`body-parser`);
 const favicon = require(`serve-favicon`);
