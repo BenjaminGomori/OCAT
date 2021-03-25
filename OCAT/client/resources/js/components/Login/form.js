@@ -1,9 +1,25 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { LoginService } from '../shared/services/login.service';
+//import bcrypt from 'bcrypt' ;
+
+
 
 export function LoginForm(){
-    
+
+    // const genPassword = function(password) {
+            
+    //     console.log('bcrypt');
+    //     console.log(bcrypt);
+    //     const saltRounds = 10;
+    //     bcrypt.genSalt(saltRounds, function(err, salt) {
+    //     bcrypt.hash(password, salt, function(err, hash) {
+    //     console.log(hash);
+    //     return hash;
+    //     });
+    //   });
+    // }
+
   const createLoginObject = (data)=>{
     const login ={
       username: data.username, 
@@ -16,7 +32,10 @@ export function LoginForm(){
 
   const onSubmit = async (data) => {
     const login = createLoginObject(data);
-    await LoginService.submit(login);
+    await LoginService.submit(login).then((response)=>{
+        console.log(response);
+        window.location.reload();
+    });
   };
 
   return (
