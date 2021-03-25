@@ -1,5 +1,6 @@
 const { ResponseHandler } = require(`../../utils`);
 const { IdentityService } = require(`../../microservices`);
+const session = require('express-session')
 
 const BASE_URL = `/user`;
 
@@ -11,12 +12,12 @@ module.exports = server => {
           try {
     
             const  {login}  = req.params;
-            await IdentityService.createSession(login);
-    
+            supervisorUsername = await IdentityService.supervisorLogin(login);
+
             ResponseHandler(
               res,
               'User Login Succeeded',
-              null,
+              {username: supervisorUsername},
               next
             );
           } catch (err) {
