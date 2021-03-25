@@ -1,23 +1,45 @@
 const { Users } = require(`../Database`);
 const { Assessments } = require(`../Database`);
+const { Password } = require(`../../utils`);
 
-exports.createSession = (login) => {
+exports.supervisorLogin = (login) => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
-      let authenticated = {};
 
       console.log("hello from micro")
-      console.log(login)
-    // let newAssessment = await new Assessments(val).save().catch(function (e) {
-    //     console.log('error in saving assessment')
-    //     resolve(newAssessment);
-    //   });
 
-    //resolve(authenticated.toJSON());
-    return;
+      let storedSupervisor = await new Users().where({id: 1}).fetch().catch(function (e) {
+        console.log('error in retrieving supervisor information')
+        resolve(storedSupervisor.toJSON());
+      });
+
+      const supervisor = storedSupervisor.toJSON()
+      let correctUsername = false;
+
+      correctUsername = validateUsername(login.username, supervisor);
+      if (correctUsername) {
+        validateSupervisorPassword(login.password, supervisor,createSession);
+      }
+
+      function createSession(result){
+        console.log('callback');
+        console.log(result);
+        console.log(supervisor);
+        resolve(supervisor.username);
+      }
+
+      return;
 
     } catch (err) {
       reject();
     }
   });
+
+  function validateUsername(username, supervisor){
+    return username.trim() == supervisor.username;
+  }
+
+  async function validateSupervisorPassword(password, supervisor, createSession ){
+    await Password(password.trim(),supervisor.password, createSession);
+  }
 };
