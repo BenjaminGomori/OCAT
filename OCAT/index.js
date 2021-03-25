@@ -1,6 +1,7 @@
 const { config } = require(`./server/libs`);
 const express = require(`express`);
 const app = express();
+const session = require('express-session');
 const server = require(`http`).Server(app);
 const cors = require('cors')
 
@@ -10,7 +11,13 @@ const bodyParser = require(`body-parser`);
 const favicon = require(`serve-favicon`);
 const compression = require(`compression`);
 app.use(compression());
-app.use(cors())
+app.use(cors());
+
+app.use(session({
+  secret: 'Your_Secret_Key',
+  resave: true,
+  saveUninitialized: true
+}))
 
 app.use(favicon(`${__dirname}/public/img/favicon.ico`));
 app.use(express.static(`${__dirname}/public`));
