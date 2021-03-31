@@ -6,11 +6,9 @@ exports.supervisorLogin = (login) => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
 
-      console.log("hello from micro")
-
       let storedSupervisor = await new Users().where({id: 1}).fetch().catch(function (e) {
         console.log('error in retrieving supervisor information')
-        resolve(storedSupervisor.toJSON());
+        resolve();
       });
 
       const supervisor = storedSupervisor.toJSON()
@@ -18,14 +16,13 @@ exports.supervisorLogin = (login) => {
 
       correctUsername = validateUsername(login.username, supervisor);
       if (correctUsername) {
-        validateSupervisorPassword(login.password, supervisor,createSession);
+        validateSupervisorPassword(login.password, supervisor,returnResult);
+      }else{
+        resolve(false);
       }
 
-      function createSession(result){
-        console.log('callback');
-        console.log(result);
-        console.log(supervisor);
-        resolve(supervisor.username);
+      function returnResult(result){
+        resolve(result);
       }
 
       return;
@@ -39,7 +36,7 @@ exports.supervisorLogin = (login) => {
     return username.trim() == supervisor.username;
   }
 
-  async function validateSupervisorPassword(password, supervisor, createSession ){
-    await Password(password.trim(),supervisor.password, createSession);
+  async function validateSupervisorPassword(password, supervisor, returnResult ){
+    await Password(password.trim(),supervisor.password, returnResult);
   }
 };

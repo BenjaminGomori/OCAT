@@ -20,7 +20,6 @@ exports.submit = ( login ) => {
       // finish the logic to handle the response when returned from the API
       request(options, (error, response) => {
         if(error == null){
-          console.log('back to lib')
           resolve(response);
         }
         

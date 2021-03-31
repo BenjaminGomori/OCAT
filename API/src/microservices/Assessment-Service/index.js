@@ -34,7 +34,7 @@ exports.retrieve = () => {
     try {
       let assesmentList = await new Assessments().where({deleted_at: null}).fetchAll().catch(function (e) {
         console.log('error in retrieving assessments')
-        resolve(assesmentList.toJSON());
+        resolve();
       });
 
       resolve(assesmentList.toJSON());
