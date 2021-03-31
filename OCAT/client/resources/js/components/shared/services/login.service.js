@@ -8,7 +8,7 @@ export class LoginService {
                 localStorage.setItem("isSupervisor", JSON.stringify(response.data));
                 localStorage.setItem("isLogedIn", true);
 
-                window.location.replace("http://localhost:4567/assessment/list");
+                window.location.replace("http://localhost:4567/assessment/new");
               })
         }
         catch (err) {
@@ -20,7 +20,7 @@ export class LoginService {
         try {
             localStorage.removeItem("isSupervisor");
             localStorage.removeItem("isLogedIn");
-            
+
             window.location.replace("http://localhost:4567/api/logout");
         }
         catch (err) {
