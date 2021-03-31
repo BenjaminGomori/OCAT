@@ -7,18 +7,24 @@ export class DashboardBulletin extends React.Component {
     super(props);
 
     this.state = {
-      isSupervisor: false
+      isSupervisor: false,
+      isLogedIn:false
     };
   }
-
+  
   componentDidMount() {
     const user = LoginService.getCurrentUser();
 
     if (user) {
       this.setState({
-        isSupervisor:true
+        isSupervisor:user.isSupervisor,
+        isLogedIn:user.isLogedIn
       });
     }
+  }
+
+  logout(){
+    LoginService.logout();
   }
 
   render() {
@@ -31,30 +37,38 @@ export class DashboardBulletin extends React.Component {
                     <h1 >OCAT Dashboard</h1>
                   </div>
                   <div className="row">
+
+                  {this.state.isLogedIn?
                     <div className="col-auto">
                       <NavLink to="/assessment/new">New</NavLink>
                     </div>
-                    <div className="col-auto">
-                      <NavLink to="/assessment/list">List</NavLink>
-                    </div>
+                  :''}
 
-                    {!this.state.isSupervisor?
-                    <div className="col-auto">
-                      <NavLink to="/login/">Login</NavLink>
-                    </div> 
+                    {!this.state.isLogedIn?
+                      <div className="col-auto">
+                        <NavLink to="/login/">Login</NavLink>
+                      </div> 
                     :''}
+
 
                     {this.state.isSupervisor?                  
-                    <div className="col-auto">
-                      <NavLink to="/supervisor/">Supervisor View</NavLink>
-                    </div>
+                      <div className="col-auto">
+                        <NavLink to="/assessment/list">List</NavLink>
+                      </div>
                     :''}
+
+                    
+                    {this.state.isLogedIn?
+                      <div className="col-auto">
+                        <button style={{color:'gray', backgroundColor:'white', borderWidth:'0px'}} onClick={this.logout}>Logout</button>
+                      </div> 
+                    :''}
+
                   </div>
                 </div>
               </div>
               <hr />
             </div>
       );
-      
   }
 }
