@@ -13,7 +13,7 @@ router.post(`/submit`, (req, res) => {
     sess.isSupervisor = false;
 
     UserService.submit(req.body).then((response) => {
-        sess.isLoggedIn = false;
+        sess.isLoggedIn = true;
         if(!response.body.data.username){
             sess.isSupervisor = false;
         }else{
