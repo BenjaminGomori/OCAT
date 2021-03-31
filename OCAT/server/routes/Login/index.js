@@ -1,8 +1,5 @@
 const router = require(`express`).Router();
-const { supervisorLogin } = require("../../../../API/src/microservices/Identity-Management-Service");
 const { UserService } = require(`../../libs`);
-const { LoginRoute } = require(`../../utils`);
-const config = require(`../../../config.json`);
 
 router.post(`/submit`, (req, res) => {
 
@@ -11,6 +8,7 @@ router.post(`/submit`, (req, res) => {
     sess.username = username;
     sess.password = password;
     sess.isSupervisor = false;
+    sess.isLoggedIn = false;
 
     UserService.submit(req.body).then((response) => {
         sess.isLoggedIn = true;

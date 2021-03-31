@@ -8,8 +8,6 @@ router.post(`/submit`, (req, res) => {
 });
 
 router.get(`/retrieve`, (req, res) => {
-    console.log('Get List Router - req.session');
-    console.log(req.session);
     if(req.session && req.session.isSupervisor)
     AssessmentService.retrieve().then((response) => {
          res.send(response.body.data)        

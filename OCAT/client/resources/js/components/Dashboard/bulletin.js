@@ -50,17 +50,11 @@ export class DashboardBulletin extends React.Component {
                       </div> 
                     :''}
 
-
-
-                    {/* {this.state.isSupervisor?                  
+                    {this.state.isSupervisor?                  
                       <div className="col-auto">
                         <NavLink to="/assessment/list">List</NavLink>
                       </div>
-                    :''} */}
-
-                      <div className="col-auto">
-                        <NavLink to="/assessment/list">List</NavLink>
-                      </div>
+                    :''}
                     
                     {this.state.isLogedIn?
                       <div className="col-auto">
