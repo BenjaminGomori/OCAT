@@ -1,6 +1,5 @@
 const { ResponseHandler } = require(`../../utils`);
 const { IdentityService } = require(`../../microservices`);
-const session = require('express-session')
 
 const BASE_URL = `/user`;
 

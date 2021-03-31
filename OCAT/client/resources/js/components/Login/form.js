@@ -1,9 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { LoginService } from '../shared/services/login.service';
-//import bcrypt from 'bcrypt' ;
-
-
 
 export function LoginForm(){
 

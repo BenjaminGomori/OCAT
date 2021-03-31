@@ -1,5 +1,4 @@
 const { Users } = require(`../Database`);
-const { Assessments } = require(`../Database`);
 const { Password } = require(`../../utils`);
 
 exports.supervisorLogin = (login) => {

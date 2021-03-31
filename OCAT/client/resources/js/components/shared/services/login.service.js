@@ -1,6 +1,4 @@
 import axios from "axios";
-import { Redirect } from "react-router";
-import config from "../../../../../../config.json";
 // from https://loizenai.com/reactjs-jwt-authentication-example/#implement-reactjs-jwt-authentication-service
 
 export class LoginService {
@@ -22,7 +20,7 @@ export class LoginService {
         try {
             localStorage.removeItem("isSupervisor");
             localStorage.removeItem("isLogedIn");
-            //await axios.get('http://localhost:4567/api/logout');
+            
             window.location.replace("http://localhost:4567/api/logout");
         }
         catch (err) {
