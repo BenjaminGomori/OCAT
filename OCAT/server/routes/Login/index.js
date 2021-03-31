@@ -5,28 +5,22 @@ const { LoginRoute } = require(`../../utils`);
 const config = require(`../../../config.json`);
 
 router.post(`/submit`, (req, res) => {
+
+    const sess = req.session;
+    const { username, password } = req.body;
+    sess.username = username;
+    sess.password = password;
+    sess.isSupervisor = false;
+
     UserService.submit(req.body).then((response) => {
+        sess.isLoggedIn = false;
+        if(!response.body.data.username){
+            sess.isSupervisor = false;
+        }else{
+            sess.isSupervisor = true;
+        }
 
-        console.log(response.body.data.username);
-        res.send(response.body.data) 
-
-        // console.log('we are back!!')
-        // console.log(req.session);
-        // console.log(response.body.data);
-        // console.log(response.body.data.username == 'supervisor');
-        // console.log('supervisor');
-        
-        // if(response.body.data.username == 'supervisor'){
-        //     req.session.isSupervisor= true;
-        //     console.log('yay');
-        //     console.log(req.session)
-
-        //     req.session.save();
-        // }else{
-        //     req.session.isSupervisor = false; 
-        //     //res.status(301).redirect('/');  
-        // }
-       
+        res.send(sess.isSupervisor);
     });
 });
 
