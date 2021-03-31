@@ -4,7 +4,15 @@ const { AssessmentService } = require(`../../libs`);
 const { ErrorHandler } = require(`../../utils`);
 
 router.post(`/submit`, (req, res) => {
-    AssessmentService.submit(req.body);
+    AssessmentService.submit(req.body).then((response) => {
+        res.send(response.body)        
+     });;
+});
+
+router.post(`/delete`, (req, res) => {
+    AssessmentService.delete(req.body).then((response) => {
+        res.send(response.body)        
+     });;
 });
 
 router.get(`/retrieve`, (req, res) => {
