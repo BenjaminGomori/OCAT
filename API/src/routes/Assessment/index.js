@@ -15,7 +15,7 @@ module.exports = server => {
 
         ResponseHandler(
           res,
-          'Submission of Assessment Succeeded',
+          'Submission of assessment succeeded',
           null,
           next
         );
@@ -34,8 +34,32 @@ module.exports = server => {
 
         ResponseHandler(
           res,
-          'Retrieved Assessments successfully',
+          'Retrieved assessments successfully',
           assessmentList,
+          next
+        );
+      } catch (err) {
+        console.log(err)
+        next(err);
+      }
+    }
+  );
+
+
+  server.post(
+    `${ BASE_URL }/delete`,
+    async (req, res, next) => {
+      try {
+
+        let  {assessmentId}  = req.params;
+        assessmentId = assessmentId.assessmentId;
+
+        await AssessmentService.delete(assessmentId);
+
+        ResponseHandler(
+          res,
+          'Assessment deleted successfully',
+          null,
           next
         );
       } catch (err) {
