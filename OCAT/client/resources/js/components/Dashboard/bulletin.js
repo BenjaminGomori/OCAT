@@ -8,7 +8,7 @@ export class DashboardBulletin extends React.Component {
 
     this.state = {
       isSupervisor: false,
-      isLogedIn:false
+      isLoggedIn:false
     };
   }
   
@@ -18,7 +18,7 @@ export class DashboardBulletin extends React.Component {
     if (user) {
       this.setState({
         isSupervisor:user.isSupervisor,
-        isLogedIn:user.isLogedIn
+        isLoggedIn:user.isLoggedIn
       });
     }
   }
@@ -38,13 +38,13 @@ export class DashboardBulletin extends React.Component {
                   </div>
                   <div className="row">
 
-                  {this.state.isLogedIn?
+                  {this.state.isLoggedIn?
                     <div className="col-auto">
                       <NavLink to="/assessment/new">New</NavLink>
                     </div>
                   :''}
 
-                    {!this.state.isLogedIn?
+                    {!this.state.isLoggedIn?
                       <div className="col-auto">
                         <NavLink to="/login/">Login</NavLink>
                       </div> 
@@ -56,7 +56,7 @@ export class DashboardBulletin extends React.Component {
                       </div>
                     :''}
                     
-                    {this.state.isLogedIn?
+                    {this.state.isLoggedIn?
                       <div className="col-auto">
                         <button style={{color:'gray', backgroundColor:'white', borderWidth:'0px'}} onClick={this.logout}>Logout</button>
                       </div> 
