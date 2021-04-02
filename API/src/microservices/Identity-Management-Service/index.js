@@ -5,8 +5,6 @@ exports.login = (login) => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
 
-     /// console.log('login ', login);
-      ///console.log('login.username ', login.username);
       let user = await new Users().where({username: login.username}).fetch().catch(function (e) {
         console.log('error in retrieving supervisor information')
         resolve(createBadAttemptUser());
@@ -15,22 +13,12 @@ exports.login = (login) => {
       //no user with that username
       if(!user) resolve(createBadAttemptUser());
       const supervisor = user.toJSON();
-      ///console.log('supervisor', supervisor);
 
       await validatePassword(login.password, supervisor,onPasswordsCompare.bind(this, supervisor));
       
-
-
       function onPasswordsCompare(user, isSame){
-        //console.log('isSame');
-        //console.log(isSame);
-
         if(!isSame ) resolve(createBadAttemptUser());
-       // console.log('user!!!!!!!!!1');
-        //user = {...user};
         user.isLoggedIn = true;
-        //console.log(user);
-
         resolve (user);
       }
 
@@ -59,13 +47,9 @@ exports.signUp = (login) => {
     try {
 
       const isUserNew = await isUserNameNew(login.username);
-      console.log('USER NEW!!!!!!!!!!!!   ==>>>',isUserNew)
-
       if(isUserNew){
         let user = await createUser(login);
-
         const newUser = await new Users(user).save().catch(function (e) {
-          console.log('error in retrieving supervisor information', e)
           resolve('false');
         });
       

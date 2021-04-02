@@ -11,10 +11,7 @@ module.exports = server => {
           try {
     
             const  {login}  = req.params;
-           // console.log('login');
-           // console.log(login);
             user = await IdentityService.login(login);
-            //console.log('back in BEACK-END Router',user);
 
             ResponseHandler(
               res,

@@ -20,7 +20,6 @@ exports.submit = ( login ) => {
       // finish the logic to handle the response when returned from the API
       request(options, (error, response) => {
         if(error == null){
-          console.log('User service fornt end!!!!!!!!!!!!!!!');
           resolve(response);
         }
         
@@ -32,7 +31,6 @@ exports.submit = ( login ) => {
   };
 
   exports.signUp = ( signUp ) => {
-    console.log(signUp);
     return new Promise((resolve, reject) => {
   
         const options = {
@@ -51,8 +49,6 @@ exports.submit = ( login ) => {
       // finish the logic to handle the response when returned from the API
       request(options, (error, response) => {
         if(error == null){
-
-          console.log(response.body);
           resolve(response);
         }
         

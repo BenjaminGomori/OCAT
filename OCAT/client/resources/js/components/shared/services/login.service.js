@@ -5,7 +5,6 @@ export class LoginService {
     static async signUp (signUp) {
         try {
             await axios.post('http://localhost:4567/api/login/signUp', signUp).then(response => {
-            console.log(response);
             if(response.data.isUserCreated === 'true'){
                         alert(`Your account was created. 
                     Please sign in.`);

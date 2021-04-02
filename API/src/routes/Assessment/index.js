@@ -19,10 +19,6 @@ module.exports = server => {
           message ='Submission of assessment failed';
         }
 
-        console.log('ROUTER!!!!!!!!!!!!!!!');
-        console.log('assessmentCreated', assessmentCreated);
-        console.log('message', message);
-
         ResponseHandler(
           res,
           message,
