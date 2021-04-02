@@ -2,13 +2,38 @@ import axios from "axios";
 // from https://loizenai.com/reactjs-jwt-authentication-example/#implement-reactjs-jwt-authentication-service
 
 export class LoginService {
-    static async submit (login) {
+    static async signUp (signUp) {
+        try {
+            await axios.post('http://localhost:4567/api/login/signUp', signUp).then(response => {
+            console.log(response);
+            if(response.data.isUserCreated === 'true'){
+                        alert(`Your account was created. 
+                    Please sign in.`);
+                    window.location.replace("http://localhost:4567/login");
+                }
+                else{
+                    alert('User name is already used.');
+                }
+              })
+        }
+        catch (err) {
+            throw new Error(`${err.response.statusText} - ${err.response.data.message}`);
+        }
+    }
+
+    static async login (login) {
         try {
             await axios.post('http://localhost:4567/api/login/submit', login).then(response => {
-                localStorage.setItem("isSupervisor", JSON.stringify(response.data));
-                localStorage.setItem("isLogedIn", true);
+                localStorage.setItem("isLoggedIn", JSON.stringify(response.data.isLoggedIn));
+                localStorage.setItem("isSupervisor", JSON.stringify(response.data.isSupervisor));
 
-                window.location.replace("http://localhost:4567/assessment/new");
+                //Is logged in 
+                if(response.data.isLoggedIn){
+                    window.location.replace("http://localhost:4567/assessment/new");
+                }
+                else {
+                    alert('Username and Passwored do not match.');
+                }
               })
         }
         catch (err) {
@@ -19,7 +44,7 @@ export class LoginService {
     static async logout() {
         try {
             localStorage.removeItem("isSupervisor");
-            localStorage.removeItem("isLogedIn");
+            localStorage.removeItem("isLoggedIn");
 
             window.location.replace("http://localhost:4567/api/logout");
         }
@@ -30,7 +55,7 @@ export class LoginService {
 
     static getCurrentUser() {
         const user = {};
-        user.isLogedIn = JSON.parse(localStorage.getItem('isLogedIn'));
+        user.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
         user.isSupervisor = JSON.parse(localStorage.getItem('isSupervisor'));
         return user;
     }
