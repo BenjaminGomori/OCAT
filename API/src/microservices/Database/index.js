@@ -28,7 +28,8 @@ const Assessments = bookshelf.Model.extend({
 });
 
 const Users = bookshelf.Model.extend({
-  tableName: `users`
+  tableName: `users`,
+  requireFetch: false
 });
 
 exports.Assessments = Assessments;
