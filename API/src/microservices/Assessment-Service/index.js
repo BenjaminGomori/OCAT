@@ -18,10 +18,10 @@ exports.submit = (assessment) => {
 
       let newAssessment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
-        resolve(newAssessment);
+        resolve('false');
       });
 
-      resolve(newAssessment);
+      resolve('true');
 
     } catch (err) {
       reject();
