@@ -31,7 +31,7 @@ export class LoginService {
                     window.location.replace("http://localhost:4567/assessment/new");
                 }
                 else {
-                    alert('Username and Passwored do not match.');
+                    alert('Username and Password do not match.');
                 }
               })
         }

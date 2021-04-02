@@ -33,7 +33,7 @@ module.exports = server => {
     
             const  {login}  = req.params;
             isUserCreated = await IdentityService.signUp(login);
-            let message = isUserCreated === 'true'? 'User created successfuly':'User not created' ;
+            let message = isUserCreated === 'true'? 'User created successfully':'User not created' ;
             
             ResponseHandler(
               res,

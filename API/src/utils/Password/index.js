@@ -1,8 +1,8 @@
 const { resolve } = require('app-root-path');
 const bcrypt = require ('bcrypt');
 
-// const copmarePasswords = async function (password, storedPassword, callBack ) {
-  //const copmarePasswords = async function (password, storedPassword) {
+// const comparePasswords = async function (password, storedPassword, callBack ) {
+  //const comparePasswords = async function (password, storedPassword) {
     // let isSamePassword = await bcrypt.compare(password, storedPassword, function(err, result) {
     //   console.log('result');
     //   console.log(result);
@@ -13,7 +13,7 @@ const bcrypt = require ('bcrypt');
   // return isSamePassword;
 // }
 
-const copmarePasswords = async function (password, storedPassword, callBack ) {
+const comparePasswords = async function (password, storedPassword, callBack ) {
   await bcrypt.compare(password, storedPassword, function(err, result) {
       callBack(result);
   });;
@@ -28,5 +28,5 @@ const getEncryptedPassword = async function (regularPassword, callback) {
   return hashedPassword;
 }
 
-module.exports.comparePassword = copmarePasswords;
+module.exports.comparePassword = comparePasswords;
 module.exports.getEncryptedPassword = getEncryptedPassword;
