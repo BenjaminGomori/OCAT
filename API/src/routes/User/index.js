@@ -11,12 +11,37 @@ module.exports = server => {
           try {
     
             const  {login}  = req.params;
-            supervisorUsername = await IdentityService.supervisorLogin(login);
+           // console.log('login');
+           // console.log(login);
+            user = await IdentityService.login(login);
+            //console.log('back in BEACK-END Router',user);
 
             ResponseHandler(
               res,
               'User Login Succeeded',
-              {username: supervisorUsername},
+              user,
+              next
+            );
+          } catch (err) {
+            console.log(err)
+            next(err);
+          }
+        }
+      );
+
+      server.post(
+        `${ BASE_URL }/signUp`,
+        async (req, res, next) => {
+          try {
+    
+            const  {login}  = req.params;
+            isUserCreated = await IdentityService.signUp(login);
+            let message = isUserCreated === 'true'? 'User created successfuly':'User not created' ;
+            
+            ResponseHandler(
+              res,
+              message,
+              {isUserCreated: isUserCreated},
               next
             );
           } catch (err) {

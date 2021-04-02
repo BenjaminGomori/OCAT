@@ -11,12 +11,22 @@ module.exports = server => {
       try {
 
         const  {assessment}  = req.params;
-        await AssessmentService.submit(assessment);
+        const assessmentCreated = await AssessmentService.submit(assessment);
+        let message = '';
+        if(assessmentCreated === 'true'){
+          message ='Submission of assessment succeeded';
+        }else{
+          message ='Submission of assessment failed';
+        }
+
+        console.log('ROUTER!!!!!!!!!!!!!!!');
+        console.log('assessmentCreated', assessmentCreated);
+        console.log('message', message);
 
         ResponseHandler(
           res,
-          'Submission of Assessment Succeeded',
-          null,
+          message,
+          {isAssessmentCreated: assessmentCreated},
           next
         );
       } catch (err) {
