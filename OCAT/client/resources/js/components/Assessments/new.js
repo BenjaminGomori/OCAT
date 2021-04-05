@@ -139,7 +139,7 @@ export function AssessmentNew(){
             </div>
 
             <div className="form-row mb-2">
-                <input type="submit"/>      
+                <input className="btn btn-primary" type="submit"/>      
             </div>
 
           </form>

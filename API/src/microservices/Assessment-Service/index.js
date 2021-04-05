@@ -18,10 +18,10 @@ exports.submit = (assessment) => {
 
       let newAssessment = await new Assessments(val).save().catch(function (e) {
         console.log('error in saving assessment')
-        resolve(newAssessment);
+        resolve('false');
       });
 
-      resolve(newAssessment);
+      resolve('true');
 
     } catch (err) {
       reject();
@@ -32,12 +32,12 @@ exports.submit = (assessment) => {
 exports.retrieve = () => {
   return new Promise(async (resolve, reject) => { //eslint-disable-line
     try {
-      let assesmentList = await new Assessments().where({deleted_at: null}).fetchAll().catch(function (e) {
+      let assessmentList = await new Assessments().where({deleted_at: null}).fetchAll().catch(function (e) {
         console.log('error in retrieving assessments')
-        resolve(assesmentList.toJSON());
+        resolve();
       });
 
-      resolve(assesmentList.toJSON());
+      resolve(assessmentList.toJSON());
 
     } catch (err) {
       reject();

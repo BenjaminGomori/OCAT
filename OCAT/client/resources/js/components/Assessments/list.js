@@ -105,7 +105,7 @@ export function AssessmentList(){
             prepareRow
         } = useTable({ columns, data },useFilters,useSortBy);
     
-        let uniqueListkey = 0;
+        let uniqueListKey = 0;
         const table =     
         <div className="container">
             <div className="row justify-content-md-center">
@@ -117,10 +117,10 @@ export function AssessmentList(){
                 >
                     <thead>
                         {headerGroups.map(headerGroup => (
-                        <tr key={uniqueListkey++}{...headerGroup.getHeaderGroupProps()}>
+                        <tr key={uniqueListKey++}{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
                             <th
-                                key={uniqueListkey++}
+                                key={uniqueListKey++}
                                 {...column.getHeaderProps(column.getSortByToggleProps())}
                             >
                                 {column.render('Header')}
@@ -137,9 +137,9 @@ export function AssessmentList(){
                         ))}
                         {/* separating between filtering and sort (toggling) */}
                         {headerGroups.map(headerGroup => (
-                        <tr key={uniqueListkey++}{...headerGroup.getHeaderGroupProps()}>
+                        <tr key={uniqueListKey++}{...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                            <th key={uniqueListkey++}>
+                            <th key={uniqueListKey++}>
                                 <div>{column.canFilter? column.render('Filter'): null}</div>
                             </th>
                             ))}
@@ -155,11 +155,11 @@ export function AssessmentList(){
                         {rows.map(row => {
                         prepareRow(row)
                         return (
-                            <tr key={uniqueListkey++}{...row.getRowProps()}>
+                            <tr key={uniqueListKey++}{...row.getRowProps()}>
                             {row.cells.map(cell => {
                                 return (
                                 <td
-                                    key={uniqueListkey++}
+                                    key={uniqueListKey++}
                                     {...cell.getCellProps()}
                                     style={{
                                         padding: '10px 15px',
