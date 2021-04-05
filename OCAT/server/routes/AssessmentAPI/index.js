@@ -14,16 +14,20 @@ router.post(`/submit`, (req, res) => {
 
 router.get(`/retrieve`, (req, res) => {
     //Only supervisors can view assessment list
-    if(req.session && req.session.isSupervisor)
-    AssessmentService.retrieve().then((response) => {
-         res.send(response.body.data)        
-      });
+    if(req.session && req.session.isSupervisor){
+        AssessmentService.retrieve().then((response) => {
+            res.send(response.body.data)        
+        });
+    }
 });
 
 router.post(`/delete`, (req, res) => {
-    AssessmentService.delete(req.body).then((response) => {
-        res.send(response.body)        
-     });;
+    //Only supervisors can delete an assessment
+    if(req.session && req.session.isSupervisor){
+        AssessmentService.delete(req.body).then((response) => {
+          res.send(response.body)        
+        });;
+    }
 });
 
 exports.router = router;
