@@ -11,29 +11,7 @@ export function AssessmentList(){
 
     useEffect(function fetch() {
         (async function() {
-            const resData = await AssessmentService.retrieveAll();
-            const columnedData = []
-            resData.data.forEach(assessment => {
-                
-                let dateOfBirth = Date.parse(assessment.cat_date_of_birth);
-                dateOfBirth = new Date (dateOfBirth);
-                dateOfBirth = dateOfBirth.toLocaleDateString("en-US");
-                
-                let createdAt = Date.parse(assessment.created_at);
-                createdAt = new Date (createdAt);
-                createdAt = createdAt.toLocaleString("en-US");
-                
-                columnedData.push(
-                    {
-                        column1: assessment.cat_name,
-                        column2: dateOfBirth,
-                        column3: assessment.instrument,
-                        column4: assessment.risk_level,
-                        column5: assessment.score+'',
-                        column6: createdAt,
-                    })
-            });
-            setColumnsArray(columnedData);
+            updateAssessmentState();
         })();
     },[]);
         
@@ -82,6 +60,12 @@ export function AssessmentList(){
                 {
                 Header: 'Created at',
                 accessor: 'column6',
+                sortType: 'basic', 
+                Filter: columnFilter
+                },
+                {
+                Header: 'Remove',
+                accessor: 'column7',
                 sortType: 'basic', 
                 Filter: columnFilter
                 },
@@ -203,5 +187,47 @@ export function AssessmentList(){
                 </div>
             </div>
         );
+    }
+
+    async function  deleteAssessment(id){   
+        await AssessmentService.deleteAssessment(id).then(()=>{
+            updateAssessmentState();
+        });
+
+    }
+
+    async function updateAssessmentState(){
+        const resData = await AssessmentService.retrieveAll();
+            const columnedData = []
+            resData.data.forEach(assessment => {
+
+                let dateOfBirth = Date.parse(assessment.cat_date_of_birth);
+                dateOfBirth = new Date (dateOfBirth);
+                dateOfBirth = dateOfBirth.toLocaleDateString("en-US");
+
+                let createdAt = Date.parse(assessment.created_at);
+                createdAt = new Date (createdAt);
+                createdAt = createdAt.toLocaleString("en-US");
+
+                let btnDelete = 
+                <button 
+                    type="button"
+                    className="btn btn-danger"
+                    id ={assessment.id}
+                    onClick={deleteAssessment.bind(this, assessment.id)}
+                >Delete</button>
+
+                columnedData.push(
+                    {
+                        column1: assessment.cat_name,
+                        column2: dateOfBirth,
+                        column3: assessment.instrument,
+                        column4: assessment.risk_level,
+                        column5: assessment.score+'',
+                        column6: createdAt,
+                        column7: btnDelete,
+                    })
+            });
+            setColumnsArray(columnedData);
     }
 }
